@@ -39,7 +39,11 @@ app.post("/query", async (req, res) => {
         });
       } else {
         res.json({
-          fulfillmentText: `Order ${parsedResponse.entities.order_number} not found.`,
+          fulfillmentText: `Order ${
+            parsedResponse.entities.order_number === null
+              ? ""
+              : parsedResponse.entities.order_number
+          } not found.`,
         });
       }
     } else {
